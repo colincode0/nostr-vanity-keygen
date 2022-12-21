@@ -133,7 +133,7 @@ export default function KeyGen() {
                 <Stack direction="column" spacing={2}>
                   <Chip
                     color="warning"
-                    label="Your prefix must be hex, so is only able to have the following characters: 0123456789abcdef"
+                    label="Your prefix must be hex, so you can only use the following characters: 0123456789abcdef"
                   />
                   <TextField
                     id="outlined-basic"
