@@ -94,10 +94,8 @@ export default function KeyGen() {
                   Source code is public and available on github at the link
                   below
                 </Typography>
-                <Link>
-                  <a target={"_blank"} href={"https://github.com/"}>
-                    <Typography> Link to github</Typography>
-                  </a>
+                <Link href={"https://github.com/"}>
+                  <Typography> Link to github</Typography>
                 </Link>
               </Box>
             </Paper>
