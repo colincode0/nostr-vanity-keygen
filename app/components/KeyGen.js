@@ -35,9 +35,10 @@ export default function KeyGen() {
     GeneratePair();
   }, []);
 
-  const [prefix, setPrefix] = useState("");
+  const [prefix, setPrefix] = useState("be");
   const handleChangePrefix = (event) => {
     setPrefix(event.target.value);
+    setDoneGenerating(false);
   };
 
   const [addressesGenerated, setAddressesGenerated] = useState(0);
@@ -62,6 +63,7 @@ export default function KeyGen() {
     setPrivateKey(svk);
     setPublicKey(pvk);
     setAddressesGenerated(i);
+    setDoneGenerating(true);
   };
   const VanityPair = async () => {
     setAddressesGenerated(0);
@@ -78,6 +80,7 @@ export default function KeyGen() {
     setPrivateKey(svk);
     setPublicKey(pvk);
     setAddressesGenerated(i);
+    setDoneGenerating(true);
   };
 
   const [checked, setChecked] = React.useState(true);
@@ -89,6 +92,25 @@ export default function KeyGen() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [highlight, setHighlight] = React.useState("");
+  useEffect(() => {
+    const HighlightPref = (prefix, pubkey) => {
+      let pubkeySub = pubkey.substring(0, prefix.length);
+      let prefixSub = pubkey.substring(prefix.length, pubkey.length);
+      return (
+        <Stack direction="row" alignItems="center">
+          <Box sx={{ color: "#44ff00" }}>
+            <Typography variant="h6">{pubkeySub}</Typography>
+          </Box>
+          <Typography variant="h6">{prefixSub}</Typography>
+        </Stack>
+      );
+    };
+    setHighlight(HighlightPref(prefix, publicKey));
+  }, [prefix, publicKey]);
+
+  const [doneGenerating, setDoneGenerating] = React.useState(false);
 
   return (
     <div>
@@ -125,6 +147,26 @@ export default function KeyGen() {
               </Box>
             </Paper>
           </Grid>
+          {doneGenerating && (
+            <Grid item xs={12}>
+              <Paper
+                sx={{
+                  bgcolor: "#000000",
+                  color: "#ffffff",
+                  border: "1px solid #8c8c8c",
+                  borderRadius: "25px",
+                  padding: "5px",
+                }}
+              >
+                <Box sx={{ p: 2 }}>
+                  <Typography variant="h6">Public Key</Typography>
+                  {highlight}
+                  <Typography variant="h6">Private Key</Typography>
+                  <Typography variant="h6"> {privateKey}</Typography>
+                </Box>
+              </Paper>
+            </Grid>
+          )}
           <Grid item xs={12}>
             <Paper
               sx={{
@@ -452,24 +494,6 @@ export default function KeyGen() {
                         </>
                       )}
                 </Stack>
-              </Box>
-            </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper
-              sx={{
-                bgcolor: "#000000",
-                color: "#ffffff",
-                border: "1px solid #8c8c8c",
-                borderRadius: "25px",
-                padding: "5px",
-              }}
-            >
-              <Box sx={{ p: 2 }}>
-                <Typography variant="h6">Public Key</Typography>
-                {publicKey}
-                <Typography variant="h6">Private Key</Typography>
-                {privateKey}
               </Box>
             </Paper>
           </Grid>
