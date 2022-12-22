@@ -87,6 +87,7 @@ export default function KeyGen() {
   const handleChangeChecked = (event) => {
     setChecked(event.target.checked);
     setAddressesGenerated(0);
+    setDoneGenerating(false);
   };
 
   const [open, setOpen] = React.useState(false);
@@ -468,14 +469,24 @@ export default function KeyGen() {
                       Generate Vanity Key Pair Slow
                     </Button>
                   ) : (
-                    <Button
-                      variant="contained"
-                      onClick={VanityPair}
-                      loading={loading}
-                      color="error"
-                    >
-                      Generate Vanity Key Pair
-                    </Button>
+                    <>
+                      <Typography
+                        variant="caption"
+                        color={"error"}
+                        align="center"
+                      >
+                        No progress bar will be shown in fast mode, just click
+                        the button and wait
+                      </Typography>
+                      <Button
+                        variant="contained"
+                        onClick={VanityPair}
+                        loading={loading}
+                        color="error"
+                      >
+                        Generate Vanity Key Pair
+                      </Button>
+                    </>
                   )}
                   {checked
                     ? addressesGenerated > 0 && (
@@ -485,15 +496,10 @@ export default function KeyGen() {
                         </Typography>
                       )
                     : addressesGenerated > 0 && (
-                        <>
-                          <Typography>
-                            Counter does not appear until the end on fast mode
-                          </Typography>
-                          <Typography>
-                            Generated {addressesGenerated} addresses before pair
-                            was found
-                          </Typography>
-                        </>
+                        <Typography>
+                          Generated {addressesGenerated} addresses before pair
+                          was found
+                        </Typography>
                       )}
                 </Stack>
               </Box>
