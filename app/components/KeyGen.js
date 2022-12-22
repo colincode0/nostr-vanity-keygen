@@ -166,6 +166,12 @@ export default function KeyGen() {
                   {highlight}
                   <Typography variant="h6">Private Key</Typography>
                   <Typography variant="h6"> {privateKey}</Typography>
+                  <Button
+                    variant="outlined"
+                    onClick={() => navigator.clipboard.writeText(privateKey)}
+                  >
+                    Copy Private Key
+                  </Button>
                 </Box>
               </Paper>
             </Grid>
