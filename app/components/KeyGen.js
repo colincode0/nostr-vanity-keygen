@@ -483,8 +483,9 @@ export default function KeyGen() {
                         color={"error"}
                         align="center"
                       >
-                        In fast mode progress will be shown in increments of
-                        5000
+                        {
+                          "Progress will be shown in increments of 3000 in fast mode"
+                        }
                       </Typography>
                       <Button
                         variant="contained"
