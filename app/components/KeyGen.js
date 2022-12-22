@@ -127,23 +127,25 @@ export default function KeyGen() {
               }}
             >
               <Box sx={{ p: 2 }}>
-                <Typography variant="h4">Vanity Nostr KeyGen</Typography>
-                <PaddedDivider />
-                <Typography>
-                  Generation happens locally in your browser. You can disconnect
-                  from the internet before running, and you can close the window
-                  after generation before reconnecting to the internet.
+                <Typography variant="h4">
+                  Nostr Character Match KeyGen
                 </Typography>
                 <PaddedDivider />
                 <Typography>
-                  The source code is public and available on github at the link
+                  {
+                    "Generation happens locally in your browser. You can disconnect from the internet before running  and you can close the window after generation (before reconnecting to the internet)."
+                  }
+                </Typography>
+                <PaddedDivider />
+                <Typography>
+                  Source code is public and is available on github at the link
                   below
                 </Typography>
                 <Link href={"https://github.com/"}>
                   <Typography> Link to github</Typography>
                 </Link>
-                {/* <PaddedDivider />
-                <Typography>My current nostr: </Typography> */}
+                <PaddedDivider />
+                <Typography>My current nostr: </Typography>
               </Box>
             </Paper>
           </Grid>
@@ -208,7 +210,7 @@ export default function KeyGen() {
                     <Box sx={{ p: 2 }}>
                       <Typography variant="caption">
                         {
-                          "Slow mode will add a slight delay between each address generation. Use this mode if you are generating over a long period of time or don't have good hardware. When this mode is off addresses will be generated as fast as possible which will be very resource intense."
+                          "Slow mode will add a slight delay between each key pair generation. Use this mode if you are generating over a long period of time or don't have good hardware. When this mode is off key pairs will be generated as fast as possible which will be very resource intense."
                         }
                       </Typography>
                       <Typography variant="caption" color={"error"}>
@@ -463,7 +465,7 @@ export default function KeyGen() {
                       onClick={VanityPairSlow}
                       loading={loading}
                     >
-                      Generate Vanity Address Slow
+                      Generate Vanity Key Pair Slow
                     </Button>
                   ) : (
                     <Button
@@ -472,14 +474,14 @@ export default function KeyGen() {
                       loading={loading}
                       color="error"
                     >
-                      Generate Vanity Address
+                      Generate Vanity Key Pair
                     </Button>
                   )}
                   {checked
                     ? addressesGenerated > 0 && (
                         <Typography>
-                          Generated {addressesGenerated} addresses before pair
-                          was found
+                          Generated {addressesGenerated} key pairs before
+                          desired prefix was found
                         </Typography>
                       )
                     : addressesGenerated > 0 && (
