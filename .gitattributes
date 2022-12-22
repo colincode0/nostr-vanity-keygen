@@ -1,2 +1,9 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+Clone repo
+
+cd into the app directory and run npm install to install the dependencies
+npm install
+
+then start the app
+npm run dev
+
+then view the app by going to http://localhost:3000 in your browser

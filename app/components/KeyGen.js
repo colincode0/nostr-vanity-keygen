@@ -92,12 +92,12 @@ export default function KeyGen() {
 
   return (
     <div>
-      <Container sx={{ pt: 3 }}>
+      <Container>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Paper className="paperCard">
               <Box sx={{ p: 2 }}>
-                <Typography variant="h4">Vanity KeyGen</Typography>
+                <Typography variant="h4">Vanity Nostr KeyGen</Typography>
                 <PaddedDivider />
                 <Typography>
                   Generation happens locally in your browser. You can disconnect
@@ -141,11 +141,9 @@ export default function KeyGen() {
                   <Paper className="paperCard">
                     <Box sx={{ p: 2 }}>
                       <Typography variant="caption">
-                        Slow mode will add a slight delay between each address
-                        generation. Use this mode if you are generating over a
-                        long period of time or don't have good hardware. When
-                        this mode is off addresses will be generated as fast as
-                        possible which will be very resource intense.
+                        {
+                          "Slow mode will add a slight delay between each address generation. Use this mode if you are generating over a long period of time or don't have good hardware. When this mode is off addresses will be generated as fast as possible which will be very resource intense."
+                        }
                       </Typography>
                       <Typography variant="caption" color={"error"}>
                         {" Fast mode can potentially crash your browser."}
