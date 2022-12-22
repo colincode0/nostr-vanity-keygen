@@ -101,14 +101,20 @@ a {
 }
 
 .paperCard {
-  background-color: #16abff33;
+  background-color: #000000;
+  border: 1px solid #8c8c8c;
   color: #ffffff;
+  border-radius: 25px;
+  padding: 5px;
 }
 
 .paperText {
   background-color: #ffffff;
 }
 
+.warnText {
+  color: #0288d1;
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
