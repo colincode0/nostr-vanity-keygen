@@ -12,6 +12,8 @@ import {
   Switch,
   Chip,
   Link,
+  Divider,
+  Tooltip,
 } from "@mui/material";
 import { generatePrivateKey, getPublicKey } from "nostr-tools";
 
@@ -47,8 +49,10 @@ export default function KeyGen() {
       pvk = getPublicKey(svk);
       i++;
       setLoading("true");
-      setAddressesGenerated(i);
-      await new Promise((r) => setTimeout(r, 1));
+      if (i % 100 === 0) {
+        setAddressesGenerated(i);
+      }
+      await new Promise((r) => setTimeout(r, 0.01));
     }
     setLoading("false");
     setPrivateKey(svk);
@@ -64,7 +68,9 @@ export default function KeyGen() {
       pvk = getPublicKey(svk);
       i++;
       setLoading("true");
-      setAddressesGenerated(i);
+      if (i % 100 === 0) {
+        setAddressesGenerated(i);
+      }
     }
     setLoading("false");
     setPrivateKey(svk);
@@ -82,14 +88,16 @@ export default function KeyGen() {
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Paper>
+            <Paper className="paperCard">
               <Box sx={{ p: 2 }}>
                 <Typography variant="h4">Vanity KeyGen</Typography>
+                <PaddedDivider />
                 <Typography>
                   Generation happens locally in your browser. You can disconnect
-                  from the internet before running and close the window before
-                  reconecting.
+                  from the internet before running, and make sure to close the
+                  window afer generation before reconecting to the internet.
                 </Typography>
+                <PaddedDivider />
                 <Typography>
                   Source code is public and available on github at the link
                   below
@@ -101,33 +109,39 @@ export default function KeyGen() {
             </Paper>
           </Grid>
           <Grid item xs={12}>
-            <Paper>
+            <Paper className="paperCard">
               <Box sx={{ p: 2 }}>
-                <Stack direction={"row"} spacing={2} alignItems="center">
+                <Stack
+                  direction={"row"}
+                  spacing={2}
+                  alignItems="center"
+                  sx={{ p: 2 }}
+                >
                   <Switch
                     checked={checked}
                     onChange={handleChangeChecked}
                     inputProps={{ "aria-label": "controlled" }}
                   />
-                  <Chip label={"currently in"} />
                   {checked ? (
-                    <Chip color={"success"} label={"Slow Mode"} />
+                    <Chip color={"success"} label={"Currently In Slow Mode"} />
                   ) : (
-                    <Chip color={"warning"} label={"Fast Mode"} />
+                    <Chip color={"error"} label={"Currently In Fast Mode"} />
                   )}
                 </Stack>
-                <Paper sx={{ p: 2, m: 2 }}>
+                <Paper sx={{ p: 2, m: 2 }} className="paperCard">
                   <Typography>
                     Slow mode will add a slight delay between each address
                     generation. Use this mode if you are generating over a long
-                    period of time. When this mode is off addresses will be
-                    generated as fast as possible which will be very resource
-                    intense.
+                    period of time or don't have good hardware. When this mode
+                    is off addresses will be generated as fast as possible which
+                    will be very resource intense.
                   </Typography>
                 </Paper>
-                <Paper sx={{ p: 2, m: 2 }}>
+                <Paper sx={{ p: 2, m: 2 }} className="paperCard">
                   <Typography>
-                    * note * Anything more than 6 characters could take hours
+                    I do not recommend trying for more than 6 characters. Prefix
+                    will get exponentially more difficult for each character
+                    added.
                   </Typography>
                 </Paper>
                 <Stack direction="column" spacing={2}>
@@ -135,17 +149,18 @@ export default function KeyGen() {
                     color="warning"
                     label="Your prefix must be hex, so you can only use the following characters: 0123456789abcdef"
                   />
-                  <TextField
-                    id="outlined-basic"
-                    label="Prefix"
-                    variant="outlined"
-                    value={prefix}
-                    onChange={handleChangePrefix}
-                  />
+                  <Paper className="paperText" sx={{ p: 2 }}>
+                    <TextField
+                      fullWidth
+                      id="outlined-basic"
+                      label="Prefix"
+                      variant="outlined"
+                      value={prefix}
+                      onChange={handleChangePrefix}
+                    />
+                  </Paper>
                   {loading === "true" ? (
-                    <Button variant="contained" disabled>
-                      Loading
-                    </Button>
+                    <Chip label="Generating..." color="warning" />
                   ) : checked ? (
                     <Button
                       variant="contained"
@@ -164,24 +179,25 @@ export default function KeyGen() {
                       Generate Vanity Address
                     </Button>
                   )}
-                  {checked ? (
-                    addressesGenerated > 0 && (
-                      <Typography>
-                        Generated {addressesGenerated} addresses before pair was
-                        found
-                      </Typography>
-                    )
-                  ) : (
-                    <Typography>
-                      Counter does not appear until complete on fast mode
-                    </Typography>
-                  )}
+                  {checked
+                    ? addressesGenerated > 0 && (
+                        <Typography>
+                          Generated {addressesGenerated} addresses before pair
+                          was found
+                        </Typography>
+                      )
+                    : addressesGenerated > 0 && (
+                        <Typography>
+                          Generated {addressesGenerated} addresses before pair
+                          was found
+                        </Typography>
+                      )}
                 </Stack>
               </Box>
             </Paper>
           </Grid>
           <Grid item xs={12}>
-            <Paper>
+            <Paper className="paperCard">
               <Box sx={{ p: 2 }}>
                 <Typography variant="h6">Public Key</Typography>
                 {publicKey}
@@ -193,5 +209,13 @@ export default function KeyGen() {
         </Grid>
       </Container>
     </div>
+  );
+}
+
+function PaddedDivider() {
+  return (
+    <Box sx={{ py: 1 }}>
+      <Divider />
+    </Box>
   );
 }
