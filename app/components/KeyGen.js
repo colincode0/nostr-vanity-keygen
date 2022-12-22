@@ -19,7 +19,7 @@ import {
 } from "@mui/material";
 import { generatePrivateKey, getPublicKey } from "nostr-tools";
 import { Black_And_White_Picture } from "@next/font/google";
-import { styled } from "@mui/material/styles";
+// import "../styles/Home.module.css";
 
 export default function KeyGen() {
   const [privateKey, setPrivateKey] = React.useState("");
