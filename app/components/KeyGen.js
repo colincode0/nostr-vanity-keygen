@@ -41,6 +41,7 @@ export default function KeyGen() {
   const [loading, setLoading] = useState("false");
 
   const VanityPairSlow = async () => {
+    setAddressesGenerated(0);
     let svk = generatePrivateKey();
     let pvk = getPublicKey(svk);
     let i = 0;
@@ -60,6 +61,7 @@ export default function KeyGen() {
     setAddressesGenerated(i);
   };
   const VanityPair = async () => {
+    setAddressesGenerated(0);
     let svk = generatePrivateKey();
     let pvk = getPublicKey(svk);
     let i = 0;
@@ -68,9 +70,6 @@ export default function KeyGen() {
       pvk = getPublicKey(svk);
       i++;
       setLoading("true");
-      if (i % 100 === 0) {
-        setAddressesGenerated(i);
-      }
     }
     setLoading("false");
     setPrivateKey(svk);
@@ -81,6 +80,7 @@ export default function KeyGen() {
   const [checked, setChecked] = React.useState(true);
   const handleChangeChecked = (event) => {
     setChecked(event.target.checked);
+    setAddressesGenerated(0);
   };
 
   return (
@@ -95,16 +95,18 @@ export default function KeyGen() {
                 <Typography>
                   Generation happens locally in your browser. You can disconnect
                   from the internet before running, and make sure to close the
-                  window afer generation before reconecting to the internet.
+                  window after generation before reconnecting to the internet.
                 </Typography>
                 <PaddedDivider />
                 <Typography>
-                  Source code is public and available on github at the link
+                  The source code is public and available on github at the link
                   below
                 </Typography>
                 <Link href={"https://github.com/"}>
                   <Typography> Link to github</Typography>
                 </Link>
+                {/* <PaddedDivider />
+                <Typography>My current nostr: </Typography> */}
               </Box>
             </Paper>
           </Grid>
@@ -134,14 +136,15 @@ export default function KeyGen() {
                     generation. Use this mode if you are generating over a long
                     period of time or don't have good hardware. When this mode
                     is off addresses will be generated as fast as possible which
-                    will be very resource intense.
+                    will be very resource intense. Fast mode can potentially
+                    crash your browser.
                   </Typography>
                 </Paper>
                 <Paper sx={{ p: 2, m: 2 }} className="paperCard">
                   <Typography>
-                    I do not recommend trying for more than 6 characters. Prefix
-                    will get exponentially more difficult for each character
-                    added.
+                    I do not recommend trying for more than 6 characters. The
+                    prefix will get exponentially more difficult for each
+                    character added.
                   </Typography>
                 </Paper>
                 <Stack direction="column" spacing={2}>
@@ -187,10 +190,15 @@ export default function KeyGen() {
                         </Typography>
                       )
                     : addressesGenerated > 0 && (
-                        <Typography>
-                          Generated {addressesGenerated} addresses before pair
-                          was found
-                        </Typography>
+                        <>
+                          <Typography>
+                            Counter does not appear until the end on fast mode
+                          </Typography>
+                          <Typography>
+                            Generated {addressesGenerated} addresses before pair
+                            was found
+                          </Typography>
+                        </>
                       )}
                 </Stack>
               </Box>
