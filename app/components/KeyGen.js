@@ -128,9 +128,7 @@ export default function KeyGen() {
               }}
             >
               <Box sx={{ p: 2 }}>
-                <Typography variant="h4">
-                  Nostr Character Match KeyGen
-                </Typography>
+                <Typography variant="h4">Nostr Vanity KeyGen</Typography>
                 <PaddedDivider />
                 <Typography>
                   {
