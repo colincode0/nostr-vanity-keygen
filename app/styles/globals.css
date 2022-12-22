@@ -94,18 +94,6 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
-
 .paperCard {
   background-color: #000000;
   border: 1px solid #8c8c8c;
@@ -120,4 +108,15 @@ a {
 
 .warnText {
   color: #0288d1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
 }

@@ -13,12 +13,11 @@ export default function Home() {
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      {/* <main className={styles.main}>
+      <main className={styles.main}>
         <div>
           <HomePage />
         </div>
-      </main> */}
-      <HomePage />
+      </main>
     </>
   );
 }
