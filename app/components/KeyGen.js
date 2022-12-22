@@ -18,6 +18,7 @@ import {
   Modal,
 } from "@mui/material";
 import { generatePrivateKey, getPublicKey } from "nostr-tools";
+import { Black_And_White_Picture } from "@next/font/google";
 
 export default function KeyGen() {
   const [privateKey, setPrivateKey] = React.useState("");
@@ -55,7 +56,7 @@ export default function KeyGen() {
       if (i % 100 === 0) {
         setAddressesGenerated(i);
       }
-      await new Promise((r) => setTimeout(r, 0.01));
+      await new Promise((r) => setTimeout(r, 0.001));
     }
     setLoading("false");
     setPrivateKey(svk);
@@ -100,8 +101,8 @@ export default function KeyGen() {
                 <PaddedDivider />
                 <Typography>
                   Generation happens locally in your browser. You can disconnect
-                  from the internet before running, and make sure to close the
-                  window after generation before reconnecting to the internet.
+                  from the internet before running, and you can close the window
+                  after generation before reconnecting to the internet.
                 </Typography>
                 <PaddedDivider />
                 <Typography>
@@ -144,8 +145,10 @@ export default function KeyGen() {
                         generation. Use this mode if you are generating over a
                         long period of time or don't have good hardware. When
                         this mode is off addresses will be generated as fast as
-                        possible which will be very resource intense. Fast mode
-                        can potentially crash your browser.
+                        possible which will be very resource intense.
+                      </Typography>
+                      <Typography variant="caption" color={"error"}>
+                        {" Fast mode can potentially crash your browser."}
                       </Typography>
                     </Box>
                   </Paper>
@@ -359,18 +362,24 @@ export default function KeyGen() {
                   </Paper>
                 </Stack>
                 <Stack direction="column" spacing={2}>
-                  <Paper className="paperText" sx={{ p: 2 }}>
-                    <TextField
-                      fullWidth
-                      id="outlined-basic"
-                      label="Prefix"
-                      variant="outlined"
-                      value={prefix}
-                      onChange={handleChangePrefix}
-                    />
-                  </Paper>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Prefix"
+                    variant="outlined"
+                    value={prefix}
+                    onChange={handleChangePrefix}
+                    inputProps={{
+                      style: {
+                        bgcolor: "black",
+                        color: "white",
+                        border: "2px solid #0288d1",
+                        margin: "5px",
+                      },
+                    }}
+                  />
                   {loading === "true" ? (
-                    <Chip label="Generating..." color="warning" />
+                    <Chip label="Generating..." color="success" />
                   ) : checked ? (
                     <Button
                       variant="contained"
