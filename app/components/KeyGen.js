@@ -19,7 +19,7 @@ import {
 } from "@mui/material";
 import { generatePrivateKey, getPublicKey } from "nostr-tools";
 import { Black_And_White_Picture } from "@next/font/google";
-// import "../styles/Home.module.css";
+import styles from "../styles/Home.module.css";
 
 export default function KeyGen() {
   const [privateKey, setPrivateKey] = React.useState("");
@@ -96,7 +96,7 @@ export default function KeyGen() {
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Paper className="paperCard">
+            <Paper className={styles.paperCard}>
               <Box sx={{ p: 2 }}>
                 <Typography variant="h4">Vanity Nostr KeyGen</Typography>
                 <PaddedDivider />
@@ -119,7 +119,7 @@ export default function KeyGen() {
             </Paper>
           </Grid>
           <Grid item xs={12}>
-            <Paper className="paperCard">
+            <Paper className={styles.paperCard}>
               <Box sx={{ p: 2 }}>
                 <Stack
                   direction={"row"}
@@ -139,7 +139,7 @@ export default function KeyGen() {
                   )}
                 </Stack>
                 <Stack spacing={2} sx={{ pb: 2 }}>
-                  <Paper className="paperCard">
+                  <Paper className={styles.paperCard}>
                     <Box sx={{ p: 2 }}>
                       <Typography variant="caption">
                         {
@@ -151,7 +151,7 @@ export default function KeyGen() {
                       </Typography>
                     </Box>
                   </Paper>
-                  <Paper className="paperCard">
+                  <Paper className={styles.paperCard}>
                     <Box sx={{ p: 2 }}>
                       <Typography align="center">
                         I do not recommend trying for more than 6 characters.
@@ -160,7 +160,7 @@ export default function KeyGen() {
                       </Typography>
                     </Box>
                   </Paper>
-                  <Paper className="paperCard">
+                  <Paper className={styles.paperCard}>
                     <Stack
                       direction={"row"}
                       alignItems={"center"}
@@ -169,7 +169,7 @@ export default function KeyGen() {
                     >
                       <Typography
                         align={"center"}
-                        className="warnText"
+                        className={styles.warnText}
                         variant={"h6"}
                       >
                         Your prefix must be hex, so you can only use the
@@ -420,7 +420,7 @@ export default function KeyGen() {
             </Paper>
           </Grid>
           <Grid item xs={12}>
-            <Paper className="paperCard">
+            <Paper className={styles.paperCard}>
               <Box sx={{ p: 2 }}>
                 <Typography variant="h6">Public Key</Typography>
                 {publicKey}
