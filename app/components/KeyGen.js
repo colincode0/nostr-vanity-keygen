@@ -56,8 +56,8 @@ export default function KeyGen() {
       setLoading("true");
       if (i % 100 === 0) {
         setAddressesGenerated(i);
+        await new Promise((r) => setTimeout(r, 1));
       }
-      await new Promise((r) => setTimeout(r, 0.001));
     }
     setLoading("false");
     setPrivateKey(svk);
@@ -66,6 +66,7 @@ export default function KeyGen() {
     setDoneGenerating(true);
   };
   const VanityPair = async () => {
+    setLoading("true");
     setAddressesGenerated(0);
     let svk = generatePrivateKey();
     let pvk = getPublicKey(svk);
@@ -74,7 +75,10 @@ export default function KeyGen() {
       svk = generatePrivateKey();
       pvk = getPublicKey(svk);
       i++;
-      setLoading("true");
+      if (i % 3000 === 0) {
+        await new Promise((r) => setTimeout(r, 0.01));
+        setAddressesGenerated(i);
+      }
     }
     setLoading("false");
     setPrivateKey(svk);
@@ -479,8 +483,8 @@ export default function KeyGen() {
                         color={"error"}
                         align="center"
                       >
-                        No progress bar will be shown in fast mode, just click
-                        the button and wait
+                        In fast mode progress will be shown in increments of
+                        5000
                       </Typography>
                       <Button
                         variant="contained"
