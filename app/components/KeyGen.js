@@ -19,7 +19,6 @@ import {
 } from "@mui/material";
 import { generatePrivateKey, getPublicKey } from "nostr-tools";
 import { Black_And_White_Picture } from "@next/font/google";
-import styles from "../styles/Home.module.css";
 
 export default function KeyGen() {
   const [privateKey, setPrivateKey] = React.useState("");
@@ -93,10 +92,18 @@ export default function KeyGen() {
 
   return (
     <div>
-      <Container>
+      <Container sx={{ mt: 5 }}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Paper className={styles.paperCard}>
+            <Paper
+              sx={{
+                bgcolor: "#000000",
+                color: "#ffffff",
+                border: "1px solid #8c8c8c",
+                borderRadius: "25px",
+                padding: "5px",
+              }}
+            >
               <Box sx={{ p: 2 }}>
                 <Typography variant="h4">Vanity Nostr KeyGen</Typography>
                 <PaddedDivider />
@@ -119,7 +126,15 @@ export default function KeyGen() {
             </Paper>
           </Grid>
           <Grid item xs={12}>
-            <Paper className={styles.paperCard}>
+            <Paper
+              sx={{
+                bgcolor: "#000000",
+                color: "#ffffff",
+                border: "1px solid #8c8c8c",
+                borderRadius: "25px",
+                padding: "5px",
+              }}
+            >
               <Box sx={{ p: 2 }}>
                 <Stack
                   direction={"row"}
@@ -139,7 +154,15 @@ export default function KeyGen() {
                   )}
                 </Stack>
                 <Stack spacing={2} sx={{ pb: 2 }}>
-                  <Paper className={styles.paperCard}>
+                  <Paper
+                    sx={{
+                      bgcolor: "#000000",
+                      color: "#ffffff",
+                      border: "1px solid #8c8c8c",
+                      borderRadius: "25px",
+                      padding: "5px",
+                    }}
+                  >
                     <Box sx={{ p: 2 }}>
                       <Typography variant="caption">
                         {
@@ -151,7 +174,15 @@ export default function KeyGen() {
                       </Typography>
                     </Box>
                   </Paper>
-                  <Paper className={styles.paperCard}>
+                  <Paper
+                    sx={{
+                      bgcolor: "#000000",
+                      color: "#ffffff",
+                      border: "1px solid #8c8c8c",
+                      borderRadius: "25px",
+                      padding: "5px",
+                    }}
+                  >
                     <Box sx={{ p: 2 }}>
                       <Typography align="center">
                         I do not recommend trying for more than 6 characters.
@@ -160,18 +191,23 @@ export default function KeyGen() {
                       </Typography>
                     </Box>
                   </Paper>
-                  <Paper className={styles.paperCard}>
+                  <Paper
+                    sx={{
+                      bgcolor: "#000000",
+                      color: "#ffffff",
+                      border: "1px solid #8c8c8c",
+                      borderRadius: "25px",
+                      padding: "5px",
+                    }}
+                  >
                     <Stack
                       direction={"row"}
                       alignItems={"center"}
                       justifyContent={"center"}
                       spacing={2}
+                      sx={{ color: "#0288d1" }}
                     >
-                      <Typography
-                        align={"center"}
-                        className={styles.warnText}
-                        variant={"h6"}
-                      >
+                      <Typography align={"center"} variant={"h6"}>
                         Your prefix must be hex, so you can only use the
                         following characters: 0123456789abcdef
                       </Typography>
@@ -420,7 +456,15 @@ export default function KeyGen() {
             </Paper>
           </Grid>
           <Grid item xs={12}>
-            <Paper className={styles.paperCard}>
+            <Paper
+              sx={{
+                bgcolor: "#000000",
+                color: "#ffffff",
+                border: "1px solid #8c8c8c",
+                borderRadius: "25px",
+                padding: "5px",
+              }}
+            >
               <Box sx={{ p: 2 }}>
                 <Typography variant="h6">Public Key</Typography>
                 {publicKey}
