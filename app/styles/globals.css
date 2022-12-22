@@ -39,21 +39,6 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 }
-.paperCard {
-  background-color: #000000;
-  border: 1px solid #8c8c8c;
-  color: #ffffff;
-  border-radius: 25px;
-  padding: 5px;
-}
-
-.paperText {
-  background-color: #ffffff;
-}
-
-.warnText {
-  color: #0288d1;
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
