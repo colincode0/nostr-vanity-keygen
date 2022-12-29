@@ -156,7 +156,11 @@ export default function KeyGen() {
                   Source code is public and is available on github at the link
                   below
                 </Typography>
-                <Link href={"https://github.com/"}>
+                <Link
+                  href={
+                    "https://github.com/colindharrington/nostr-vanity-keygen"
+                  }
+                >
                   <Typography> Link to github</Typography>
                 </Link>
                 <PaddedDivider />
