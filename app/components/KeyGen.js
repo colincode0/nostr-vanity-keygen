@@ -164,10 +164,23 @@ export default function KeyGen() {
                   <Typography> Link to github</Typography>
                 </Link>
                 <PaddedDivider />
-                <Typography>
-                  Authors Public Key:
-                  npub1zjr85smanggvzf0kg5c04qvevq2xm5rmq3xgxm3wfrz5rycc2gpqfune4u
-                </Typography>
+                <Box sx={{ overflowWrap: "break-word" }}>
+                  <Typography>
+                    Authors Public Key:
+                    npub1zjr85smanggvzf0kg5c04qvevq2xm5rmq3xgxm3wfrz5rycc2gpqfune4u
+                  </Typography>
+                </Box>
+                <Button
+                  variant="outlined"
+                  onClick={() =>
+                    navigator.clipboard.writeText(
+                      "npub1zjr85smanggvzf0kg5c04qvevq2xm5rmq3xgxm3wfrz5rycc2gpqfune4u"
+                    )
+                  }
+                  fullWidth
+                >
+                  <Typography variant="caption">Copy </Typography>
+                </Button>
               </Box>
             </Paper>
           </Grid>
