@@ -273,7 +273,6 @@ export default function KeyGen() {
                   >
                     <Box sx={{ p: 2 }}>
                       <Typography align="center">
-                        I do not recommend trying for more than 6 characters.
                         The prefix will get exponentially more difficult for
                         each character added.
                       </Typography>
