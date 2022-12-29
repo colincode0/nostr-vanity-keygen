@@ -144,7 +144,7 @@ export default function KeyGen() {
               }}
             >
               <Box sx={{ p: 2 }}>
-                <Typography variant="h4">Nostr Vanity KeyGen</Typography>
+                <Typography variant="h4">Nostr POW KeyGen</Typography>
                 <PaddedDivider />
                 <Typography>
                   {
@@ -164,7 +164,10 @@ export default function KeyGen() {
                   <Typography> Link to github</Typography>
                 </Link>
                 <PaddedDivider />
-                <Typography>My current nostr: </Typography>
+                <Typography>
+                  Authors Public Key:
+                  npub1zjr85smanggvzf0kg5c04qvevq2xm5rmq3xgxm3wfrz5rycc2gpqfune4u
+                </Typography>
               </Box>
             </Paper>
           </Grid>
