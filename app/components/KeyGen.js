@@ -18,7 +18,7 @@ import {
   Modal,
 } from "@mui/material";
 import { generatePrivateKey, getPublicKey } from "nostr-tools";
-import { Black_And_White_Picture } from "@next/font/google";
+import { isMobile } from "react-device-detect";
 
 export default function KeyGen() {
   const [privateKey, setPrivateKey] = React.useState("");
@@ -99,12 +99,24 @@ export default function KeyGen() {
     const HighlightPref = (prefix, pubkey) => {
       let pubkeySub = pubkey.substring(0, prefix.length);
       let prefixSub = pubkey.substring(prefix.length, pubkey.length);
-      return (
-        <Stack direction="row" alignItems="center">
+      return isMobile ? (
+        <Stack direction="row" justifyContent={"space-around"} sx={{ px: 2 }}>
+          <Box sx={{ color: "#44ff00" }}>
+            <Typography>{pubkeySub}</Typography>
+          </Box>
+          <Box sx={{ overflowWrap: "break-word", width: "100%" }}>
+            <Typography align={"right"}>{prefixSub}</Typography>
+          </Box>
+        </Stack>
+      ) : (
+        <Stack direction="row">
           <Box sx={{ color: "#44ff00" }}>
             <Typography variant="h6">{pubkeySub}</Typography>
           </Box>
-          <Typography variant="h6">{prefixSub}</Typography>
+
+          <Typography variant="h6" align={"right"}>
+            {prefixSub}
+          </Typography>
         </Stack>
       );
     };
@@ -159,14 +171,17 @@ export default function KeyGen() {
                   padding: "5px",
                 }}
               >
-                <Box sx={{ p: 2 }}>
+                <Box sx={{ p: 2, overflowWrap: "break-word" }}>
                   <Typography variant="h6">Public Key</Typography>
+
                   {highlight}
                   <Typography variant="h6">Private Key</Typography>
                   <Typography variant="h6"> {privateKey}</Typography>
+                  <br />
                   <Button
                     variant="outlined"
                     onClick={() => navigator.clipboard.writeText(privateKey)}
+                    fullWidth
                   >
                     Copy Private Key
                   </Button>
