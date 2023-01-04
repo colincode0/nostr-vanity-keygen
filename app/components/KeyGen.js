@@ -291,10 +291,9 @@ export default function KeyGen() {
                       direction={"row"}
                       alignItems={"center"}
                       justifyContent={"center"}
-                      spacing={2}
-                      sx={{ color: "#0288d1" }}
+                      sx={{ color: "#0288d1", p: 2 }}
                     >
-                      <Typography align={"center"} variant={"h6"}>
+                      <Typography align={"center"}>
                         Your prefix must be hex, so you can only use the
                         following characters: 0123456789abcdef
                       </Typography>
