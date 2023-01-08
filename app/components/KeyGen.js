@@ -272,10 +272,15 @@ export default function KeyGen() {
                     }}
                   >
                     <Box sx={{ p: 2 }}>
-                      <Typography align="center">
-                        The prefix will get exponentially more difficult for
-                        each character added.
+                      <Typography>
+                        This key miner is simple and does not use multithreading
+                        - it is not recommended to try and mine more than 5
+                        characters. For mining keys with a larger difficulty,
+                        Rana is recommended.
                       </Typography>
+                      <Link href={"https://github.com/grunch/rana"}>
+                        <Typography> Link to Rana</Typography>
+                      </Link>
                     </Box>
                   </Paper>
                   <Paper
