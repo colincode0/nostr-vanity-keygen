@@ -167,14 +167,14 @@ export default function KeyGen() {
                 <Box sx={{ overflowWrap: "break-word" }}>
                   <Typography>
                     Authors Public Key:
-                    npub1zjr85smanggvzf0kg5c04qvevq2xm5rmq3xgxm3wfrz5rycc2gpqfune4u
+                    npub1qqqqqqr3sshpc7askk80utkufhmpm9q9h96xgezrrl9ktyykhvmsa5509l
                   </Typography>
                 </Box>
                 <Button
                   variant="outlined"
                   onClick={() =>
                     navigator.clipboard.writeText(
-                      "npub1zjr85smanggvzf0kg5c04qvevq2xm5rmq3xgxm3wfrz5rycc2gpqfune4u"
+                      "npub1qqqqqqr3sshpc7askk80utkufhmpm9q9h96xgezrrl9ktyykhvmsa5509l"
                     )
                   }
                   fullWidth
