@@ -37,7 +37,7 @@ export default function KeyGen() {
 
   const [prefix, setPrefix] = useState("be");
   const handleChangePrefix = (event) => {
-    setPrefix(event.target.value);
+    setPrefix(event.target.value.toLowerCase);
     setDoneGenerating(false);
   };
 
