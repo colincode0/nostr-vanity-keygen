@@ -161,9 +161,7 @@ export default function KeyGen() {
                   below
                 </Typography>
                 <Link
-                  href={
-                    "https://github.com/colindharrington/nostr-vanity-keygen"
-                  }
+                  href={"https://github.com/colincode0/nostr-vanity-keygen"}
                 >
                   <Typography> Link to github</Typography>
                 </Link>
